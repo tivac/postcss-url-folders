@@ -9,7 +9,7 @@ const lsr    = require("lsr").lsrSync;
 const transform = require("../index.js");
 
 function dir(tgt) {
-    return lsr(tgt).map(({ path, size }) => [ path, size ]);
+    return lsr(tgt).map(({ path }) => [ path ]);
 }
 
 describe("postcss-asset-tree", () => {

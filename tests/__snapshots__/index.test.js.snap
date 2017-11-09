@@ -4,15 +4,12 @@ exports[`postcss-asset-tree should copy referenced assets to the output 1`] = `
 Array [
   Array [
     "./a",
-    0,
   ],
   Array [
     "./a/b",
-    0,
   ],
   Array [
     "./a/b/test.png",
-    160037,
   ],
 ]
 `;
@@ -35,11 +32,9 @@ exports[`postcss-asset-tree should support a source dir 1`] = `
 Array [
   Array [
     "./b",
-    0,
   ],
   Array [
     "./b/test.png",
-    160037,
   ],
 ]
 `;
@@ -48,11 +43,9 @@ exports[`postcss-asset-tree should support an output dir 1`] = `
 Array [
   Array [
     "./a",
-    0,
   ],
   Array [
     "./a/test.png",
-    160037,
   ],
 ]
 `;
@@ -80,7 +73,6 @@ exports[`postcss-asset-tree should use the to/from dirs 1`] = `
 Array [
   Array [
     "./test.png",
-    160037,
   ],
 ]
 `;
