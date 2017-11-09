@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`postcss-asset-tree should copy referenced assets to the output 1`] = `
+Array [
+  Array [
+    "./a",
+    0,
+  ],
+  Array [
+    "./a/b",
+    0,
+  ],
+  Array [
+    "./a/b/test.png",
+    160037,
+  ],
+]
+`;
+
+exports[`postcss-asset-tree should ignore missing assets 1`] = `
+".missing {
+    background: url(\\"missing.png\\");
+}
+"
+`;
+
+exports[`postcss-asset-tree should ignore remote assets 1`] = `
+".remote {
+    background: url(\\"https://patcavit.com/assets/img/grey.png\\");
+}
+"
+`;
+
+exports[`postcss-asset-tree should support a source dir 1`] = `
+Array [
+  Array [
+    "./b",
+    0,
+  ],
+  Array [
+    "./b/test.png",
+    160037,
+  ],
+]
+`;
+
+exports[`postcss-asset-tree should support an output dir 1`] = `
+Array [
+  Array [
+    "./a",
+    0,
+  ],
+  Array [
+    "./a/test.png",
+    160037,
+  ],
+]
+`;
+
+exports[`postcss-asset-tree should update references to assets 1`] = `
+".plain {
+    background: red url(\\"a/b/test.png\\");
+}
+
+.query {
+    background: url(\\"a/b/test.png?query=true\\");
+}
+
+.hash {
+    background: url(\\"a/b/test.png#hash=true\\");
+}
+
+.queryhash {
+    background: url(\\"a/b/test.png?query=true#hash=true\\");
+}
+"
+`;
+
+exports[`postcss-asset-tree should use the to/from dirs 1`] = `
+Array [
+  Array [
+    "./test.png",
+    160037,
+  ],
+]
+`;

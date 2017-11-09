@@ -1,0 +1,15 @@
+.plain {
+    background: red url("test.png");
+}
+
+.query {
+    background: url("test.png?query=true");
+}
+
+.hash {
+    background: url("test.png#hash=true");
+}
+
+.queryhash {
+    background: url("test.png?query=true#hash=true");
+}
