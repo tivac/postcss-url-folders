@@ -17,6 +17,7 @@
     "node": ">=8.5.0"
   },
   "dependencies": {
+    "cp-file": "^5.0.0",
     "is-absolute-url": "^2.1.0",
     "mkdirp": "^0.5.1"
   },

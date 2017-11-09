@@ -3,8 +3,8 @@
 const fs   = require("fs");
 const path = require("path");
 
-const mkdirp = require("mkdirp");
-const url    = require("is-absolute-url");
+const cp  = require("cp-file");
+const url = require("is-absolute-url");
 
 module.exports = (asset, dir, options, decl, warn, result) => {
     if(url(asset.url) || !fs.existsSync(asset.absolutePath)) {
@@ -17,9 +17,12 @@ module.exports = (asset, dir, options, decl, warn, result) => {
     const relative = path.relative(source, asset.absolutePath);
     const absolute = path.join(output, relative);
 
-    mkdirp.sync(path.dirname(absolute));
+    // Remove files first
+    if(fs.existsSync(absolute)) {
+        fs.unlinkSync(absolute);
+    }
 
-    fs.copyFileSync(asset.absolutePath, absolute);
+    cp.sync(asset.absolutePath, absolute);
 
     return `${relative.replace(/\\/g, "/")}${asset.search}${asset.hash}`;
 };
