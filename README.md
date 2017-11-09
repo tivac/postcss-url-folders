@@ -1,4 +1,5 @@
-# postcss-url-folders
+postcss-url-folders   [![NPM Version](https://img.shields.io/npm/v/postcss-url-folders.svg)](https://www.npmjs.com/package/postcss-url-folders) [![NPM License](https://img.shields.io/npm/l/postcss-url-folders.svg)](https://www.npmjs.com/package/postcss-url-folders) [![NPM Downloads](https://img.shields.io/npm/dm/postcss-url-folders.svg)](https://www.npmjs.com/package/postcss-url-folders)
+===================
 
 Small helper transform for [`postcss-url`](https://github.com/postcss/postcss-url) to maintain folder structure while copying assets around.
 
