@@ -1,0 +1,5 @@
+@import "../../shared/font.css";
+
+.shared {
+    background: red url("../../shared/shared.png");
+}

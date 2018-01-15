@@ -17,14 +17,17 @@
     "node": ">=8.5.0"
   },
   "dependencies": {
+    "commondir": "^1.0.1",
     "cp-file": "^5.0.0",
-    "is-absolute-url": "^2.1.0",
-    "mkdirp": "^0.5.1"
+    "is-absolute-url": "^2.1.0"
   },
   "devDependencies": {
-    "jest": "^21.2.1",
+    "eslint": "^4.15.0",
+    "jest": "^22.1.1",
     "lsr": "^2.0.0",
-    "postcss-url": "^7.1.2",
+    "postcss": "^6.0.16",
+    "postcss-import": "^11.0.0",
+    "postcss-url": "^7.3.0",
     "rimraf": "^2.6.2"
   }
 }

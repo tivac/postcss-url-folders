@@ -50,6 +50,34 @@ Array [
 ]
 `;
 
+exports[`postcss-asset-tree should support references outside of the source dir 1`] = `
+Array [
+  Array [
+    "./shared",
+  ],
+  Array [
+    "./shared/FantasqueSansMono-Regular.woff2",
+  ],
+  Array [
+    "./shared/shared.png",
+  ],
+]
+`;
+
+exports[`postcss-asset-tree should support references outside of the source dir 2`] = `
+"@font-face {
+    font-family: \\"Fantasque Sans Mono\\";
+    src: url(\\"shared/FantasqueSansMono-Regular.woff2\\") format(\\"woff2\\");
+    font-weight: 400;
+    font-style: normal;
+}
+
+.shared {
+    background: red url(\\"shared/shared.png\\");
+}
+"
+`;
+
 exports[`postcss-asset-tree should update references to assets 1`] = `
 ".plain {
     background: red url(\\"a/b/test.png\\");

@@ -3,8 +3,9 @@
 const fs   = require("fs");
 const path = require("path");
 
-const cp  = require("cp-file");
-const url = require("is-absolute-url");
+const cp     = require("cp-file");
+const url    = require("is-absolute-url");
+const common = require("commondir");
 
 module.exports = (asset, dir, options, decl, warn, result) => {
     if(url(asset.url) || !fs.existsSync(asset.absolutePath)) {
@@ -14,10 +15,13 @@ module.exports = (asset, dir, options, decl, warn, result) => {
     const source = path.resolve(options.source || path.dirname(result.opts.from));
     const output = path.resolve(options.output || path.dirname(result.opts.to));
 
-    const relative = path.relative(source, asset.absolutePath);
+    const parent = path.resolve(common([ source, asset.absolutePath ]));
+    
+    // Assets sometimes don't live under source dir...
+    const relative = path.relative(parent === source ? source : parent, asset.absolutePath);
     const absolute = path.join(output, relative);
-
-    // Remove files first
+    
+    // Remove files already in the output dir first
     if(fs.existsSync(absolute)) {
         fs.unlinkSync(absolute);
     }

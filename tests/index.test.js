@@ -2,10 +2,11 @@
 
 const fs = require("fs");
 
-const rimraf = require("rimraf");
-const url    = require("postcss-url");
-const lsr    = require("lsr").lsrSync;
-const cp     = require("cp-file");
+const rmrf    = require("rimraf");
+const postcss = require("postcss");
+const url     = require("postcss-url");
+const lsr     = require("lsr").lsrSync;
+const cp      = require("cp-file");
 
 const transform = require("../index.js");
 
@@ -15,7 +16,7 @@ function dir(tgt) {
 
 describe("postcss-asset-tree", () => {
     afterEach(() => {
-        rimraf.sync("./tests/output")
+        rmrf.sync("./tests/output");
     });
 
     it("should export a function", () => {
@@ -126,5 +127,24 @@ describe("postcss-asset-tree", () => {
         const result = fs.lstatSync("./tests/output/a/b/test.png");
 
         expect(result.size).toBe(source.size);
+    });
+
+    it("should support references outside of the source dir", async () => {
+        const processor = postcss([
+            require("postcss-import"),
+            url({
+                source : "./tests/specimens/a/b",
+                output : "./tests/output",
+                url    : transform
+            })
+        ]);
+
+        const result = await processor.process(fs.readFileSync("./tests/specimens/a/b/shared.css"), {
+            from : "./tests/specimens/a/b/shared.css",
+            to   : "./tests/output/shared.css"
+        });
+
+        expect(dir("./tests/output")).toMatchSnapshot();
+        expect(result.css).toMatchSnapshot();
     });
 });
